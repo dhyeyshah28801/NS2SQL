@@ -1,0 +1,74 @@
+{
+  "type": "object",
+  "properties": {
+    "Users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "passwordHash": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "name", "email", "passwordHash", "createdAt"]
+      }
+    },
+    "Products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "price": { "type": "number", "minimum": 0 },
+          "stock": { "type": "integer", "minimum": 0 },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "name", "price", "stock", "createdAt"]
+      }
+    },
+    "Orders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "userId": { "type": "integer" },
+          "productId": { "type": "integer" },
+          "quantity": { "type": "integer", "minimum": 1 },
+          "totalPrice": { "type": "number", "minimum": 0 },
+          "status": { 
+            "type": "string", 
+            "enum": ["pending", "completed", "cancelled"] 
+          },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "userId", "productId", "quantity", "totalPrice", "status", "createdAt"]
+      }
+    },
+    "Audits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "tableName": { "type": "string" },
+          "action": { 
+            "type": "string", 
+            "enum": ["insert", "update", "delete"] 
+          },
+          "recordId": { "type": "integer" },
+          "userId": { "type": "integer" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "tableName", "action", "recordId", "userId", "timestamp"]
+      }
+    }
+  }
+}
