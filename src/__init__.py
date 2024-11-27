@@ -9,7 +9,7 @@ from models.rectifier import rectify_statement
 
 # Recording configuration
 samplerate = 16000  # Sampling rate for audio
-duration = 5  # Duration of recording in seconds
+duration = 10  # Duration of recording in seconds
 audio_path = "recording.wav"
 
 # Function to record audio
