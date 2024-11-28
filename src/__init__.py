@@ -6,6 +6,7 @@ from scipy.io.wavfile import write
 from models.wave2vec import model, processor
 from data.make_dataset import fetchDatabaseSchema
 from models.rectifier import rectify_statement
+from models.schema_retrieval import get_schema_from_query
 from models.text_to_sql import nl_to_sql
 
 # Recording configuration
@@ -47,7 +48,8 @@ save_audio(audio_data, audio_path, samplerate)
 transcription = process_audio(audio_path)
 dbSchema = fetchDatabaseSchema('./data/db_schema.json')
 rectified_statement = rectify_statement(dbSchema, transcription)
-sql_query = nl_to_sql(rectified_statement)
+schema = get_schema_from_query(rectified_statement)
+sql_query = nl_to_sql(rectified_statement, schema=schema)
 
 # Output results
 print(f"Predicted SQL Query: {sql_query}")
