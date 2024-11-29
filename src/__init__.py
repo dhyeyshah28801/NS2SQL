@@ -46,10 +46,7 @@ def process_audio(audio_path):
 audio_data = record_audio()
 save_audio(audio_data, audio_path, samplerate)
 transcription = process_audio(audio_path)
-dbSchema = fetchDatabaseSchema('./data/db_schema.json')
-rectified_statement = rectify_statement(dbSchema, transcription)
-schema = get_schema_from_query(rectified_statement)
-sql_query = nl_to_sql(rectified_statement, schema=schema)
-
-# Output results
+#dbSchema = fetchDatabaseSchema('./data/db_schema.json')
+schema = get_schema_from_query(transcription)
+sql_query = rectify_statement(schema, transcription)
 print(f"Predicted SQL Query: {sql_query}")

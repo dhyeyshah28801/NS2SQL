@@ -1,11 +1,11 @@
 from openai import OpenAI
 import json 
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import os
-load_dotenv()
+#load_dotenv()
 
 def rectify_statement(schema, recorded_statement):
-    client = OpenAI(api_key=os.environ['API_KEY'])
+    client = OpenAI(api_key="API_KEY")
 
     # Prepare the prompt for OpenAI ChatGPT
     prompt = (
@@ -13,10 +13,11 @@ def rectify_statement(schema, recorded_statement):
         f"{json.dumps(schema, indent=2)} "
         "Now, rectify and enhance the following statement based on the schema: "
         f"'{recorded_statement}' "
-        "Return the rectified and enhanced statement as a JSON."
+        "Use the rectified and enhanced statement and convert it to an SQL query."
+        "Only Return the SQL query in a json stringified format and do not return an extra letter."
     )
 
-    print('Prompt: ', prompt)
+    #print('Prompt: ', prompt)
     try:
         completion = client.chat.completions.create(
             model="gpt-4o-mini",

@@ -20,5 +20,10 @@ def get_schema_from_query(query):
         top_k=3,
         include_values=False,
         include_metadata=True
-    )
-    return results['matches'][0]['metadata']['text']
+    )["matches"]
+    i = 0
+    schema = ''
+    while i < 3 and i < len(results):
+        schema += results[i]['metadata']['text']
+        i+=1
+    return schema
