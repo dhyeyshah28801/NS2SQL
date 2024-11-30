@@ -7,7 +7,6 @@ from models.wave2vec import model, processor
 from data.make_dataset import fetchDatabaseSchema
 from models.rectifier import rectify_statement
 from models.schema_retrieval import get_schema_from_query
-from models.text_to_sql import nl_to_sql
 
 # Recording configuration
 samplerate = 16000  # Sampling rate for audio
@@ -46,7 +45,6 @@ def process_audio(audio_path):
 audio_data = record_audio()
 save_audio(audio_data, audio_path, samplerate)
 transcription = process_audio(audio_path)
-#dbSchema = fetchDatabaseSchema('./data/db_schema.json')
 schema = get_schema_from_query(transcription)
 sql_query = rectify_statement(schema, transcription)
 print(f"Predicted SQL Query: {sql_query}")
