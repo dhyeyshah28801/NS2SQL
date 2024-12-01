@@ -42,9 +42,16 @@ def process_audio(audio_path):
     return transcription
 
 # Main flow
-audio_data = record_audio()
-save_audio(audio_data, audio_path, samplerate)
-transcription = process_audio(audio_path)
-schema = get_schema_from_query(transcription)
-sql_query = rectify_statement(schema, transcription)
-print(f"Predicted SQL Query: {sql_query}")
+def ns2sql(recording_path = audio_path):
+    print( recording_path, audio_path, recording_path == audio_path)
+    if recording_path == audio_path :
+        audio_data = record_audio()
+        save_audio(audio_data, recording_path, samplerate)
+    transcription = process_audio(recording_path)
+    #dbSchema = fetchDatabaseSchema('./data/db_schema.json')
+    schema = get_schema_from_query(transcription)
+    sql_query = rectify_statement(schema, transcription)
+    print(f"Predicted SQL Query: {sql_query}")
+
+if __name__ == "__main__":
+    ns2sql()

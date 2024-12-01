@@ -5,7 +5,7 @@ import os
 #load_dotenv()
 
 def rectify_statement(schema, recorded_statement):
-    client = OpenAI(api_key="API_KEY")
+    client = OpenAI(api_key="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")
 
     # Prepare the prompt for OpenAI ChatGPT
     prompt = (
@@ -26,7 +26,6 @@ def rectify_statement(schema, recorded_statement):
                 {"role": "user", "content": prompt}
             ]
         )
-        print(completion.choices[0].message.content)
         # Parse the response
         rectified_statement = completion.choices[0].message.content
         return rectified_statement
