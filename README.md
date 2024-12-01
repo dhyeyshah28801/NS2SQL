@@ -3,6 +3,8 @@ First of all you need to install all the modules from the `root` of this reposit
     ```
         pip install -r requirements.txt
     ```
+
+and set the OpenAI key in .env file (The API key is mentioned in the report at the end after the github URL) 
 1. In your terminal, go into the `src` folder using the `cd` command.
 2. Run `__init__.py` using the command (Depending on your python configurations)
     ```

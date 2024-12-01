@@ -1,11 +1,11 @@
 from openai import OpenAI
 import json 
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 import os
-#load_dotenv()
+load_dotenv()
 
 def rectify_statement(schema, recorded_statement):
-    client = OpenAI(api_key="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")
+    client = OpenAI(api_key=os.environ["API_KEY"])
 
     # Prepare the prompt for OpenAI ChatGPT
     prompt = (
