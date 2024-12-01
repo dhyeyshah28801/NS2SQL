@@ -7,7 +7,7 @@ sounddevice
 numpy
 scipy
 openai
-dotenv
+python-dotenv
 pinecone
 gcloud
 google-api-python-client
